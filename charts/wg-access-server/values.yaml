@@ -109,6 +109,12 @@ strategy:
   # or "RollingUpdate" when persistence is not enabled.
   # type: Recreate
 
+# sets securityContext for the main container. With some kernel versions, adding the
+# 'NET_RAW' capability might be required for the iptables table to be initialized.
+securityContext:
+  capabilities:
+    add: ['NET_ADMIN']
+
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
